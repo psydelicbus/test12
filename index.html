@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PARANORMAL ATTACK — PSYTRANCE REINVENTED</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* Base Reset */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Share Tech Mono', monospace;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Glitch Overlay */
+    .glitch-layer {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index: 9999;
+      opacity: 0;
+      animation: flicker 3s infinite;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 255, 0, 0.05) 1px,
+        transparent 2px
+      );
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 0; }
+      20%, 24%, 55% { opacity: 0.05; }
+    }
+
+    /* Hero Section */
+    header.hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.2) brightness(0.9);
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4em;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: #0f0;
+      text-shadow: 0 0 10px #0f0, 0 0 20px #f0f;
+      position: relative;
+      z-index: 2;
+      animation: glitch 1s linear infinite;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      color: #f00;
+      margin-top: 10px;
+      text-shadow: 0 0 10px #f00;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, -2px); text-shadow: -2px -2px 0 #f00; }
+      40% { transform: translate(2px, 2px); text-shadow: 2px 2px 0 #0f0; }
+      60% { transform: translate(-2px, 2px); text-shadow: -2px 2px 0 #00f; }
+      80% { transform: translate(2px, -2px); text-shadow: 2px -2px 0 #ff0; }
+      100% { transform: translate(0); text-shadow: none; }
+    }
+
+    /* About Section */
+    section.about {
+      padding: 80px 40px;
+      background: #111;
+      position: relative;
+    }
+
+    .about h2 {
+      font-size: 2.5em;
+      color: #f0f;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #f0f;
+    }
+
+    .bio {
+      font-size: 1.1em;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: auto;
+      color: #ccc;
+      animation: glitchText 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glitchText {
+      0% { text-shadow: 1px 1px #f00, -1px -1px #0f0; }
+      100% { text-shadow: -2px 2px #00f, 2px -2px #ff0; }
+    }
+
+    /* Tour Dates */
+    section.tour {
+      padding: 60px 40px;
+      background: #000 url('https://www.transparenttextures.com/patterns/black-linen.png');
+    }
+
+    .tour h2 {
+      font-size: 2em;
+      color: #0ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #0ff;
+    }
+
+    .dates {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .date-card {
+      background: #1a1a1a;
+      border-left: 5px solid #0ff;
+      padding: 15px;
+      font-family: monospace;
+      transition: transform 0.3s ease;
+    }
+
+    .date-card:hover {
+      transform: scale(1.03);
+      border-left-color: #f0f;
+    }
+
+    /* Media Section */
+    section.media {
+      padding: 60px 40px;
+      background: #111;
+    }
+
+    .media iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      margin-top: 20px;
+    }
+
+    /* Merch Section */
+    section.merch {
+      padding: 60px 40px;
+      background: #000;
+    }
+
+    .merch-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .merch-item {
+      background: #222;
+      padding: 15px;
+      text-align: center;
+      border: 1px dashed #555;
+      transition: all 0.3s ease;
+    }
+
+    .merch-item:hover {
+      border-color: #0f0;
+      transform: scale(1.02);
+    }
+
+    /* Contact Form */
+    section.contact {
+      padding: 60px 40px;
+      background: #111;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      background: #000;
+      border: 1px solid #333;
+      padding: 10px;
+      color: #fff;
+      font-family: inherit;
+      margin-bottom: 15px;
+    }
+
+    form button {
+      background: #f00;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #ff0;
+      color: black;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #000;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .socials a {
+      color: #0ff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .socials a:hover {
+      color: #f0f;
+    }
+
+    /* Optional: Noise Texture */
+    body::before {
+      content: '';
+      position: fixed;
+      width: 200%; height: 200%;
+      top: -50%; left: -50%;
+      background-image: url('https://www.transparenttextures.com/patterns/noise.png');
+      z-index: 10000;
+      pointer-events: none;
+      opacity: 0.05;
+      animation: noiseMove 10s linear infinite;
+    }
+
+    @keyframes noiseMove {
+      from { background-position: 0 0; }
+      to { background-position: 200px 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Glitch Layer -->
+  <div class="glitch-layer"></div>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <video autoplay muted loop playsinline poster="placeholder.jpg">
+      <source src="your-video.mp4" type="video/mp4">
+    </video>
+    <div>
+      <h1>PARANORMAL ATTACK</h1>
+      <p>PSYTRANCE REINVENTED</p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>About</h2>
+    <div class="bio">
+      Paranormal Attack is not just a DJ — it's an experience. Born in the underground rave scene and refined on global stages, this internationally acclaimed artist blends psychedelic trance with futuristic sound design. From Brazil's Universo Paralello to Berlin's Berghain, every set is a journey through time, space, and consciousness.
+    </div>
+  </section>
+
+  <!-- Tour Dates -->
+  <section class="tour">
+    <h2>Tour Dates</h2>
+    <div class="dates">
+      <div class="date-card">JUL 20 | São Paulo, BR<br><strong>Luna Festival</strong></div>
+      <div class="date-card">AUG 5 | Amsterdam, NL<br><strong>Dreamscape Festival</strong></div>
+      <div class="date-card">SEP 12 | Tokyo, JP<br><strong>Cyber Rave Dome</strong></div>
+    </div>
+  </section>
+
+  <!-- Media -->
+  <section class="media">
+    <h2>Media & Sets</h2>
+    <iframe src="https://www.youtube.com/embed/abc123" allowfullscreen></iframe>
+    <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/123456789" allow="autoplay"></iframe>
+  </section>
+
+  <!-- Merch -->
+  <section class="merch">
+    <h2>Merch</h2>
+    <div class="merch-grid">
+      <div class="merch-item">T-Shirt — $30</div>
+      <div class="merch-item">Hoodie — $60</div>
+      <div class="merch-item">USB Drive Mix — $15</div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact">
+    <h2>Contact / Booking</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <textarea rows="5" placeholder="Message..."></textarea>
+      <button type="submit">SEND</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="socials">
+      <a href="#">Instagram</a> |
+      <a href="#">SoundCloud</a> |
+      <a href="#">Spotify</a> |
+      <a href="#">YouTube</a>
+    </div>
+    <p>&copy; 2025 PARANORMAL ATTACK — ALL RIGHTS RESERVED</p>
+  </footer>
+
+</body>
+</html>
